@@ -33,12 +33,14 @@ save = open("save.txt", "r")
 
 # Définition d'une fonction annexe pour le bot
 def signe(x):
+    '''Renvoie -1 si x négatif et +1 si x positif'''
     if x >= 0:
         return 1
     elif x < 0:
         return -1
 
 def opp(dir):
+    '''Renvoie la direction opposée'''
     if dir == [1, 0]:
         return [-1, 0]
     elif dir == [-1, 0]:
@@ -49,6 +51,8 @@ def opp(dir):
         return [0, 1]
 
 def dir_bot(serpent, direction, fruit):
+    '''Renvoie la direction que doit suivre le serpent pour se diriger vers le fruit, 
+    en évitant dans la majorité des cas qu'il y ait self-bite'''
     vect = [fruit[0] - serpent[-1][0], fruit[1] - serpent[-1][1]]
     if abs(vect[0]) >= abs(vect[1]):
         dir1 = [signe(vect[0]), 0]
